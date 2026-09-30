@@ -1,0 +1,10 @@
+{%- comment -%}
+  Quick Add form snippet
+{%- endcomment -%}
+<form method="post" action="/cart/add" class="quick-add-form" data-quick-add-form>
+  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+  <input type="hidden" name="quantity" value="1">
+  <button type="submit" class="quick-add-btn button button--primary">
+    <span>ADD TO CART</span>
+  </button>
+</form>

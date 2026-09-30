@@ -1,0 +1,26 @@
+{%- unless template == 'index' or template == 'cart' or template == 'list-collections' -%}
+  <nav class="breadcrumbs" aria-label="breadcrumbs">
+    <div class="container">
+      <ol class="breadcrumbs__list list-reset">
+        <li class="breadcrumbs__item"><a href="{{ routes.root_url }}">Home</a></li>
+        {%- if template contains 'collection' and collection.handle -%}
+          <li class="breadcrumbs__separator">/</li>
+          <li class="breadcrumbs__item"><span aria-current="page">{{ collection.title }}</span></li>
+        {%- elsif template contains 'product' -%}
+          {%- if collection.url -%}
+            <li class="breadcrumbs__separator">/</li>
+            <li class="breadcrumbs__item">{{ collection.title | link_to: collection.url }}</li>
+          {%- endif -%}
+          <li class="breadcrumbs__separator">/</li>
+          <li class="breadcrumbs__item"><span aria-current="page">{{ product.title }}</span></li>
+        {%- elsif template contains 'page' -%}
+          <li class="breadcrumbs__separator">/</li>
+          <li class="breadcrumbs__item"><span aria-current="page">{{ page.title }}</span></li>
+        {%- else -%}
+          <li class="breadcrumbs__separator">/</li>
+          <li class="breadcrumbs__item"><span aria-current="page">{{ page_title }}</span></li>
+        {%- endif -%}
+      </ol>
+    </div>
+  </nav>
+{%- endunless -%}
