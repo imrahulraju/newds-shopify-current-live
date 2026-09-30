@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="{{ page_description | default: shop.description | escape }}">
+  <title>{{ page_title }}{% if current_tags %} – {{ current_tags | join: ', ' }}{% endif %}{% if current_page != 1 %} – Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} – {{ shop.name }}{% endunless %}</title>
+  {{ content_for_header }}
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+  {{ 'responsive.css' | asset_url | stylesheet_tag }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>:root{--primary:{{ settings.primary_text | default: '#8F7967' }};--secondary:{{ settings.body_text | default: '#8C8178' }};--body:{{ settings.body_text | default: '#8C8178' }};--bg:{{ settings.background | default: '#FFFFFF' }};--footer-bg:{{ settings.footer_bg | default: '#F9F8F6' }};--border:{{ settings.border | default: '#DED6CF' }};--btn:{{ settings.button_bg | default: '#98816D' }};}</style>
+</head>
+<body class="template-{{ template.name }}{% if template.suffix %}--{{ template.suffix }}{% endif %}">
+  <a class="skip-link" href="#MainContent">Skip to content</a>
+  {% section 'announcement-bar' %}
+  {% section 'header' %}
+  {% render 'mobile-menu' %}
+  {% render 'cart-drawer' %}
+  {% render 'predictive-search' %}
+  <main id="MainContent" role="main">{{ content_for_layout }}</main>
+  {% section 'footer' %}
+  {% section 'mobile-bottom-nav' %}
+  <div class="overlay" data-overlay></div>
+  <script src="{{ 'theme.js' | asset_url }}" defer></script>
+  <script src="{{ 'cart.js' | asset_url }}" defer></script>
+  <script src="{{ 'product.js' | asset_url }}" defer></script>
+  <script src="{{ 'collection.js' | asset_url }}" defer></script>
+  <script src="{{ 'search.js' | asset_url }}" defer></script>
+</body>
+</html>

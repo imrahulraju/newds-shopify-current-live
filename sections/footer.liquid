@@ -1,0 +1,8 @@
+<footer><div class="foot-grid">
+<div class="foot-brand"><a class="logo" href="/">{{ settings.brand_name | default: 'NEWDS.CO' }}</a><p style="margin-top:10px;font-size:13px">Luxury Jewellery for the Modern You</p><p style="font-size:12px;margin-top:8px">newds.co@gmail.com</p><a href="https://instagram.com/newds.co" style="display:flex;gap:8px;margin-top:12px;align-items:center">{% render 'icon', icon: 'instagram' %} Instagram · @newds.co</a></div>
+<div><h4>SHOP</h4>{% assign shop_links = 'All Products|/collections/all,Anklets|/collections/anklets,Bracelets|/collections/bracelets,Earring|/collections/earring,Neck Chains|/collections/neck-chains,Rings|/collections/rings,Wrist Bands|/collections/wrist-bands,New Arrivals|/collections/new-arrivals' | split: ',' %}{% for l in shop_links %}{% assign parts = l | split: '|' %}<a href="{{ parts[1] }}">{{ parts[0] }}</a>{% endfor %}</div>
+<div><h4>HELP</h4><a href="/pages/contact">Contact Us</a><a href="/pages/size-guide">Size Guide</a><a href="/pages/jewellery-care">Jewellery Care</a><a href="/pages/faq">FAQ's</a></div>
+<div><h4>POLICIES</h4><a href="/policies/privacy-policy">Privacy Policy</a><a href="/policies/refund-policy">Return Policy</a><a href="/policies/shipping-policy">Shipping Policy</a><a href="/policies/terms-of-service">Terms & Conditions</a></div>
+<div><h4>FOLLOW US</h4><a href="https://instagram.com/newds.co">Instagram</a></div>
+</div><div class="copy">© 2026 Newds.Co. All rights reserved.</div></footer>
+{% schema %}{"name":"Footer","settings":[]}{% endschema %}

@@ -1,0 +1,7 @@
+<div class="benefits"><div class="benefits-grid">
+<div class="benefit reveal">{% render 'icon', icon: 'shield' %}<span>{{ section.settings.b1 | default: 'Anti Tarnish' }}</span></div>
+<div class="benefit reveal">{% render 'icon', icon: 'drop' %}<span>{{ section.settings.b2 | default: 'Waterproof' }}</span></div>
+<div class="benefit reveal">{% render 'icon', icon: 'sparkle' %}<span>{{ section.settings.b3 | default: '18K Gold Plated' }}</span></div>
+<div class="benefit reveal">{% render 'icon', icon: 'truck' %}<span>{{ section.settings.b4 | default: 'Long Lasting' }}</span></div>
+</div></div>
+{% schema %}{"name":"Benefits bar","settings":[{"type":"text","id":"b1","label":"Benefit 1","default":"Anti Tarnish"},{"type":"text","id":"b2","label":"Benefit 2","default":"Waterproof"},{"type":"text","id":"b3","label":"Benefit 3","default":"18K Gold Plated"},{"type":"text","id":"b4","label":"Benefit 4","default":"Long Lasting"}]}{% endschema %}

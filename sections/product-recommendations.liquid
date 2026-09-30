@@ -1,0 +1,2 @@
+{% assign rec = recommendations.products %}{% if rec.size > 0 %}<section class="section"><div class="section-head"><h2>{{ section.settings.heading | default: 'RELATED PRODUCTS' }}</h2></div><div class="carousel-wrap"><div class="carousel">{% for p in rec limit: 8 %}{% render 'product-card', product: p %}{% endfor %}</div></div></section>{% endif %}
+{% schema %}{"name":"Product recommendations","settings":[{"type":"text","id":"heading","label":"Heading","default":"RELATED PRODUCTS"}]}{% endschema %}

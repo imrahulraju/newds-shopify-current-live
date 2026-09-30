@@ -1,0 +1,8 @@
+<nav class="bottom-nav"><div>
+<a href="/">{% render 'icon', icon: 'home' %}HOME</a>
+<a href="/collections/all">{% render 'icon', icon: 'shop' %}SHOP</a>
+<a href="/account">{% render 'icon', icon: 'account' %}ACCOUNT</a>
+<a href="https://wa.me/{{ settings.whatsapp_number | default: '919999999999' }}">{% render 'icon', icon: 'chat' %}WHATSAPP</a>
+<a href="/cart" onclick="event.preventDefault();Cart.open()">{% render 'icon', icon: 'cart' %}CART</a>
+</div></nav>
+{% schema %}{"name":"Mobile bottom nav","settings":[]}{% endschema %}

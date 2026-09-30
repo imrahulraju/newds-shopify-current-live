@@ -1,0 +1,29 @@
+{% render 'breadcrumbs' %}
+<div class="pdp"><div class="pdp-gallery">
+<div class="main"><img id="PdpMain" src="{{ product.featured_image | image_url: width: 900 }}" width="900" height="900" alt="{{ product.title | escape }}"></div>
+<div class="pdp-thumbs">{% for img in product.images limit: 5 %}<button class="{% if forloop.first %}on{% endif %}" data-src="{{ img | image_url: width: 900 }}"><img src="{{ img | image_url: width: 120 }}" width="120" height="120" alt="{{ product.title | escape }}"></button>{% endfor %}</div>
+<div class="gal-tools"><button onclick="navigator.share&&navigator.share({title:document.title,url:location.href})">SHARE</button></div>
+</div><div class="pdp-info">
+<h1>{{ product.title | upcase }}</h1>
+<div class="pdp-price">{% render 'price', product: product %}</div>
+{% if product.metafields.custom.badge %}<span class="p-badge" style="position:static">{{ product.metafields.custom.badge }}</span>{% endif %}
+{% form 'product', product, id: 'ProductForm' %}
+<input type="hidden" name="id" id="VariantId" value="{{ product.selected_or_first_available_variant.id }}">
+<script type="application/json" id="VariantData">{{ product.variants | json }}</script>
+{% unless product.has_only_default_variant %}
+{% for opt in product.options_with_values %}<div class="variant-label">{{ opt.name | upcase }}{% if opt.name == 'Size' or opt.name == 'size' %}<a data-modal="SizeModal">Size Guide</a>{% endif %}</div>
+<div class="variants">{% for v in opt.values %}<button type="button" class="variant {% if opt.selected_value == v %}on{% endif %}" data-option="option{{ opt.position }}" data-value="{{ v | escape }}">{{ v }}</button>{% endfor %}</div>{% endfor %}
+{% endunless %}
+<div class="variant-label">QUANTITY</div><div class="qty"><button type="button" data-qty="minus">−</button><input name="quantity" value="1" min="1"><button type="button" data-qty="plus">+</button></div>
+<div id="Avail">{% if product.available %}<span class="stock-in">● In Stock</span>{% else %}<span class="stock-out">● Out of Stock</span>{% endif %}</div>
+<button type="submit" class="btn btn--solid" style="margin-top:14px" {% unless product.available %}disabled{% endunless %}>View Cart</button>
+<div class="cart-success" id="CartOk">✓ Added to cart successfully</div>
+{% endform %}
+<div class="pdp-meta">
+<details open><summary>DESCRIPTION</summary><div style="margin-top:8px">{{ product.description }}</div></details>
+{% if product.metafields.custom.care_instructions %}<details><summary>JEWELLERY CARE</summary><div style="margin-top:8px">{{ product.metafields.custom.care_instructions }}</div></details>{% endif %}
+{% if product.metafields.custom.product_features %}<details><summary>FEATURES</summary><div style="margin-top:8px">{{ product.metafields.custom.product_features | join: '<br>' }}</div></details>{% endif %}
+<details><summary>SHIPPING & RETURNS</summary><div style="margin-top:8px">Free shipping on orders over ₹3799. 30-day easy returns.</div></details>
+</div></div></div>
+<div class="modal" id="SizeModal"><div class="modal-box"><button data-modal-close style="position:absolute;top:12px;right:14px;background:none;border:0;font-size:18px;cursor:pointer">×</button><h3>SIZE GUIDE</h3>{% if product.metafields.custom.size_guide %}{{ product.metafields.custom.size_guide }}{% else %}<table><tr><th>Size</th><th>Inner Dia (mm)</th></tr><tr><td>6</td><td>16.5</td></tr><tr><td>7</td><td>17.3</td></tr><tr><td>8</td><td>18.1</td></tr></table>{% endif %}</div></div>
+{% schema %}{"name":"Main product","settings":[]}{% endschema %}

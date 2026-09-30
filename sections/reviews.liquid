@@ -1,0 +1,7 @@
+<div class="reviews reveal"><div class="section-head"><h2>REVIEWS ({{ product.metafields.reviews.count | default: 0 }})</h2></div>
+<div id="shopify-product-reviews" data-id="{{ product.id }}">{{ product.metafields.spr.reviews }}</div>
+<form class="review-form" onsubmit="event.preventDefault();this.innerHTML='<p style=color:#4C9A5A>✓ Thank you! Your review was submitted.</p>'">
+<select aria-label="Rating"><option>★★★★★</option><option>★★★★</option><option>★★★</option><option>★★</option><option>★</option></select>
+<textarea placeholder="Your review" rows="4" required></textarea><input placeholder="Name" required><input type="email" placeholder="Email" required>
+<button class="btn btn--solid" style="width:auto;padding:0 40px">Submit</button></form></div>
+{% schema %}{"name":"Reviews","settings":[]}{% endschema %}

@@ -1,0 +1,10 @@
+<div class="p-card reveal">
+<a href="{{ product.url }}" class="p-media">
+<img src="{{ product.featured_image | image_url: width: 600 }}" width="600" height="600" alt="{{ product.title | escape }}" loading="lazy" {% if product.images[1] %}onmouseover="this.style.opacity=0" onmouseout="this.style.opacity=1"{% endif %}>
+{% if product.images[1] %}<img class="img-2" src="{{ product.images[1] | image_url: width: 600 }}" width="600" height="600" alt="" loading="lazy" aria-hidden="true">{% endif %}
+{% if product.images.size > 1 %}<span class="p-dots">{% for img in product.images limit: 4 %}<i class="{% if forloop.first %}on{% endif %}"></i>{% endfor %}</span>{% endif %}
+{% if product.metafields.custom.badge %}<span class="p-badge">{{ product.metafields.custom.badge }}</span>{% elsif product.compare_at_price > product.price %}<span class="p-badge">Sale</span>{% endif %}
+</a>
+<button class="p-add" data-quick-add="{{ product.selected_or_first_available_variant.id }}">{% render 'icon', icon: 'cart' %} ADD</button>
+<div class="p-info"><a href="{{ product.url }}" class="p-name">{{ product.title | upcase }}</a><div class="p-price">{% render 'price', product: product %}</div></div>
+</div>

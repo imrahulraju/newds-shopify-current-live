@@ -1,0 +1,16 @@
+[
+  {"name":"Brand","settings":[
+    {"type":"text","id":"brand_name","label":"Brand name","default":"NEWDS.CO"},
+    {"type":"color","id":"primary_text","label":"Primary text","default":"#8F7967"},
+    {"type":"color","id":"body_text","label":"Body text","default":"#8C8178"},
+    {"type":"color","id":"background","label":"Background","default":"#FFFFFF"},
+    {"type":"color","id":"footer_bg","label":"Footer background","default":"#F9F8F6"},
+    {"type":"color","id":"border","label":"Border","default":"#DED6CF"},
+    {"type":"color","id":"button_bg","label":"Button background","default":"#98816D"},
+    {"type":"text","id":"whatsapp_number","label":"WhatsApp number","default":"919999999999"}
+  ]},
+  {"name":"Homepage","settings":[
+    {"type":"collection","id":"new_arrivals_col","label":"New arrivals collection"},
+    {"type":"collection","id":"best_sellers_col","label":"Best sellers collection"}
+  ]}
+]

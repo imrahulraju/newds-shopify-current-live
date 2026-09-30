@@ -1,0 +1,1 @@
+{% if product.compare_at_price > product.price %}<s>₹{{ product.compare_at_price | money_without_currency }}</s>₹{{ product.price | money_without_currency }}{% else %}₹{{ product.price | money_without_currency }}{% endif %}

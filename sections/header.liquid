@@ -1,0 +1,9 @@
+<header class="site-header"><div class="header-inner">
+<div class="header-left"><button class="icon-btn" data-menu-open aria-label="Menu">{% render 'icon', icon: 'menu' %}</button></div>
+<div class="header-center"><a href="/" class="logo">{{ settings.brand_name | default: 'NEWDS.CO' }}</a></div>
+<div class="header-right">
+<button class="icon-btn" data-search-open aria-label="Search">{% render 'icon', icon: 'search' %}</button>
+<a class="icon-btn" href="{% if customer %}/account{% else %}/account/login{% endif %}" aria-label="Account">{% render 'icon', icon: 'account' %}</a>
+<button class="icon-btn" onclick="Cart.open()" aria-label="Cart">{% render 'icon', icon: 'cart' %}<span class="cart-count">0</span></button>
+</div></div></header>
+{% schema %}{"name":"Header","settings":[]}{% endschema %}
