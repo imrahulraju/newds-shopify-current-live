@@ -29,7 +29,9 @@ button{font:inherit}
 .header-left{display:flex;justify-content:flex-start}
 .header-right{display:flex;justify-content:flex-end;align-items:center;gap:18px}
 .header-center{text-align:center}
-.logo{font-family:'Cormorant Garamond',Georgia,serif;font-size:20px;letter-spacing:5px;color:var(--primary);font-weight:500}
+.logo{display:inline-flex;align-items:center;color:var(--primary);font-family:'Cormorant Garamond',Georgia,serif;font-size:20px;letter-spacing:5px;font-weight:500}
+.logo img{display:block;width:196px;height:19px}
+.site-header .logo img{width:196px;height:19px}
 .icon-btn{background:none;border:0;cursor:pointer;color:var(--primary);position:relative;display:inline-flex;padding:4px}
 .icon-btn svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.4}
 .cart-count{position:absolute;top:-4px;right:-8px;background:var(--primary);color:#fff;font-size:12px;min-width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center}

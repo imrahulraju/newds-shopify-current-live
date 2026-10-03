@@ -19,7 +19,7 @@
   {% render 'mobile-menu' %}
   {% render 'cart-drawer' %}
   {% render 'predictive-search' %}
-  {% render 'filters-drawer', current_handle: collection.handle, current_sort: collection.sort_by %}
+  {% if template.name == 'collection' or template.name == 'search' %}{% render 'filters-drawer', current_handle: collection.handle, current_sort: collection.sort_by %}{% endif %}
   <main id="MainContent" role="main">{{ content_for_layout }}</main>
   {% section 'footer' %}
   {% section 'mobile-bottom-nav' %}
@@ -28,7 +28,7 @@
   <script src="{{ 'cart.js' | asset_url }}" defer></script>
   <script src="{{ 'product.js' | asset_url }}" defer></script>
   <script src="{{ 'collection.js' | asset_url }}" defer></script>
-  <script src="{{ 'filters.js' | asset_url }}" defer></script>
+  {% if template.name == 'collection' or template.name == 'search' %}<script src="{{ 'filters.js' | asset_url }}" defer></script>{% endif %}
   <script src="{{ 'search.js' | asset_url }}" defer></script>
 </body>
 </html>
