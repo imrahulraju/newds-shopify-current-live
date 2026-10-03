@@ -1,1 +1,37 @@
-{"general":{"search":{"placeholder":"Search jewellery...","results":"Results","no_results":"No results found"},"cart":{"title":"Your Cart","empty":"Your cart is empty","subtotal":"Subtotal","checkout":"Checkout","view_cart":"View Cart","added":"✓ Added to cart successfully"},"menu":{"close":"Close","home":"HOME","shop":"SHOP","new_arrivals":"NEW ARRIVALS","contact":"CONTACT US","policies":"OUR POLICIES"},"footer":{"rights":"© 2026 Newds.Co. All rights reserved."}}}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "general": {
+    "search": {
+      "placeholder": "Search jewellery...",
+      "results": "Results",
+      "no_results": "No results found"
+    },
+    "cart": {
+      "title": "Your Cart",
+      "empty": "Your cart is empty",
+      "subtotal": "Subtotal",
+      "checkout": "Checkout",
+      "view_cart": "View Cart",
+      "added": "✓ Added to cart successfully"
+    },
+    "menu": {
+      "close": "Close",
+      "home": "HOME",
+      "shop": "SHOP",
+      "new_arrivals": "NEW ARRIVALS",
+      "contact": "CONTACT US",
+      "policies": "OUR POLICIES"
+    },
+    "footer": {
+      "rights": "© 2026 Newds.Co. All rights reserved."
+    }
+  }
+}

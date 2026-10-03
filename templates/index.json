@@ -1,1 +1,56 @@
-{"sections":{"hero":{"type":"hero-banner","settings":{}},"benefits":{"type":"benefits-bar","settings":{}},"cats":{"type":"category-navigation","settings":{}},"new":{"type":"product-carousel","settings":{"heading":"NEW ARRIVALS","collection":"new-arrivals"}},"best":{"type":"product-carousel","settings":{"heading":"BEST SELLERS","collection":"best-sellers"}},"about":{"type":"about-section","settings":{}}},"order":["hero","benefits","cats","new","best","about"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "hero-banner",
+      "settings": {}
+    },
+    "announcement": {
+      "type": "announcement-bar",
+      "settings": {}
+    },
+    "benefits": {
+      "type": "benefits-bar",
+      "settings": {}
+    },
+    "cats": {
+      "type": "category-navigation",
+      "settings": {}
+    },
+    "new": {
+      "type": "product-carousel",
+      "settings": {
+        "heading": "NEW ARRIVALS",
+        "collection": "new-arrivals"
+      }
+    },
+    "best": {
+      "type": "product-carousel",
+      "settings": {
+        "heading": "BEST SELLERS",
+        "collection": "best-sellers"
+      }
+    },
+    "about": {
+      "type": "about-section",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "announcement",
+    "benefits",
+    "cats",
+    "new",
+    "best",
+    "about"
+  ]
+}
