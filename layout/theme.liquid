@@ -19,6 +19,7 @@
   {% render 'mobile-menu' %}
   {% render 'cart-drawer' %}
   {% render 'predictive-search' %}
+  {% render 'filters-drawer', current_handle: collection.handle, current_sort: collection.sort_by %}
   <main id="MainContent" role="main">{{ content_for_layout }}</main>
   {% section 'footer' %}
   {% section 'mobile-bottom-nav' %}
@@ -27,6 +28,7 @@
   <script src="{{ 'cart.js' | asset_url }}" defer></script>
   <script src="{{ 'product.js' | asset_url }}" defer></script>
   <script src="{{ 'collection.js' | asset_url }}" defer></script>
+  <script src="{{ 'filters.js' | asset_url }}" defer></script>
   <script src="{{ 'search.js' | asset_url }}" defer></script>
 </body>
 </html>

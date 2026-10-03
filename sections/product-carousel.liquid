@@ -1,4 +1,4 @@
-<section class="section reveal" style="padding-top:8px"><div class="section-head"><h2>{{ section.settings.heading | default: 'NEW ARRIVALS' }}</h2></div>
+<section class="section reveal" style="padding-top:8px"><div class="section-head has-filter"><div><h2>{{ section.settings.heading | default: 'NEW ARRIVALS' }}</h2><p class="f-list-count" style="font-size:12px;margin-top:6px"></p></div><button type="button" class="f-open-btn f-icon-only" data-filters-open aria-label="Open filters">{% render 'icon', icon: 'sliders' %}<span class="f-count FilterCountBadge" hidden></span></button></div>
 <div class="carousel-wrap"><button class="car-btn prev" data-scroll="prev" aria-label="Previous">‹</button>
 <div class="carousel">{% assign col = collections[section.settings.collection] %}
 {% if col and col.products.size > 0 %}{% for p in col.products limit: section.settings.limit %}{% render 'product-card', product: p %}{% endfor %}

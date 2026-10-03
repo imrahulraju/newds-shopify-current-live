@@ -33,7 +33,7 @@ body{padding-bottom:60px}
 .foot-grid h4{text-align:center}
 .foot-brand .logo{font-size:20px}
 .bottom-nav{display:block}
-.ann-track{animation-duration:18s}
+.ann-track{animation-duration:45s}
 }
 @media(min-width:1440px){
 .page-width,.header-inner,.carousel-wrap,.prod-grid,.coll-head,.pdp,.foot-grid,.benefits-grid{max-width:1280px}

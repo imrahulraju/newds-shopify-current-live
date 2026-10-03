@@ -1,0 +1,47 @@
+<aside class="filters-drawer" id="FiltersDrawer" data-current-handle="{{ current_handle | default: '' }}" data-current-sort="{{ current_sort | default: 'manual' }}" aria-hidden="true" aria-label="Product filters">
+  <div class="filters-head"><span>Filters</span><button type="button" class="filters-close" data-filters-close aria-label="Close filters">×</button></div>
+  <div class="filters-body">
+    <div class="filters-group" id="FilterCategoryGroup">
+      <h4>Category</h4>
+      {% assign _shown = 0 %}
+      {% for col in collections %}
+        {% if col.products_count > 0 and col.handle != 'frontpage' %}
+          <label class="f-radio"><input type="radio" name="fcat" value="{{ col.handle }}"><span class="f-dot" aria-hidden="true"></span>{{ col.title }}</label>
+          {% assign _shown = _shown | plus: 1 %}
+        {% endif %}
+      {% endfor %}
+      {% if _shown == 0 %}
+        <label class="f-radio"><input type="radio" name="fcat" value="anklets"><span class="f-dot" aria-hidden="true"></span>Anklets</label>
+        <label class="f-radio"><input type="radio" name="fcat" value="bracelets"><span class="f-dot" aria-hidden="true"></span>Bracelets</label>
+        <label class="f-radio"><input type="radio" name="fcat" value="earring"><span class="f-dot" aria-hidden="true"></span>Earring</label>
+        <label class="f-radio"><input type="radio" name="fcat" value="neck-chains"><span class="f-dot" aria-hidden="true"></span>Neck Chains</label>
+        <label class="f-radio"><input type="radio" name="fcat" value="rings"><span class="f-dot" aria-hidden="true"></span>Rings</label>
+        <label class="f-radio"><input type="radio" name="fcat" value="wrist-bands"><span class="f-dot" aria-hidden="true"></span>Wrist Bands</label>
+      {% endif %}
+      <div class="f-sub" id="BraceletSub">
+        <label class="f-check"><input type="checkbox" name="fsub" value="double-layer"><span class="f-box" aria-hidden="true"></span>Double Layer Bracelets</label>
+        <label class="f-check"><input type="checkbox" name="fsub" value="single-layer"><span class="f-box" aria-hidden="true"></span>Single Layer Bracelet</label>
+      </div>
+    </div>
+    <div class="filters-group" id="FilterSizeGroup">
+      <h4>Size</h4>
+      <div class="f-pills" id="FilterSizePills">
+        <button type="button" class="f-pill" data-size="free size" aria-pressed="false">Free Size</button>
+        <button type="button" class="f-pill" data-size="7" aria-pressed="false">7</button>
+      </div>
+    </div>
+    <div class="filters-group" id="FilterSortGroup">
+      <h4>Sort</h4>
+      {% assign _sort = current_sort | default: 'manual' %}
+      <label class="f-radio"><input type="radio" name="fsort" value="manual"{% if _sort == 'manual' %} checked{% endif %}><span class="f-dot" aria-hidden="true"></span>Featured</label>
+      <label class="f-radio"><input type="radio" name="fsort" value="price-ascending"{% if _sort == 'price-ascending' %} checked{% endif %}><span class="f-dot" aria-hidden="true"></span>Price: Low to High</label>
+      <label class="f-radio"><input type="radio" name="fsort" value="price-descending"{% if _sort == 'price-descending' %} checked{% endif %}><span class="f-dot" aria-hidden="true"></span>Price: High to Low</label>
+      <label class="f-radio"><input type="radio" name="fsort" value="created-descending"{% if _sort == 'created-descending' %} checked{% endif %}><span class="f-dot" aria-hidden="true"></span>Newest</label>
+      <label class="f-radio"><input type="radio" name="fsort" value="best-selling"{% if _sort == 'best-selling' %} checked{% endif %}><span class="f-dot" aria-hidden="true"></span>Best Selling</label>
+    </div>
+  </div>
+  <div class="filters-foot">
+    <button type="button" class="f-apply" id="FiltersApply">Apply Filters</button>
+    <button type="button" class="f-clear" id="FiltersClear">Clear All</button>
+  </div>
+</aside>
