@@ -84,7 +84,7 @@ button{font:inherit}
 .about p{margin-bottom:14px;font-size:14px}
 /* collection */
 .coll-head{max-width:var(--max);margin:0 auto;padding:28px 32px 8px;display:grid;grid-template-columns:1fr auto;align-items:end;gap:16px}
-.crumbs{font-size:12px;letter-spacing:1px;color:#B9AEA4;margin-bottom:8px;text-transform:uppercase}
+.crumbs{font-size:12px;letter-spacing:1px;color:#B9AEA4;margin-bottom:8px;text-transform:uppercase;padding-left:0}
 .crumbs a:hover{color:var(--primary)}
 .coll-title{font-size:17px;letter-spacing:3px;text-transform:uppercase;text-align:left}
 .coll-tools{display:flex;gap:10px;align-items:center}
