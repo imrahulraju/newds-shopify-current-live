@@ -1,7 +1,26 @@
-<div class="reviews reveal"><div class="section-head"><h2>REVIEWS ({{ product.metafields.reviews.count | default: 0 }})</h2></div>
+<div class="reviews reveal">
+<div class="section-head"><h2>REVIEWS ({{ product.metafields.reviews.count | default: 0 }})</h2></div>
 <div id="shopify-product-reviews" data-id="{{ product.id }}">{{ product.metafields.spr.reviews }}</div>
-<form class="review-form" onsubmit="event.preventDefault();this.innerHTML='<p style=color:#4C9A5A>✓ Thank you! Your review was submitted.</p>'">
-<select aria-label="Rating"><option>★★★★★</option><option>★★★★</option><option>★★★</option><option>★★</option><option>★</option></select>
-<textarea placeholder="Your review" rows="4" required></textarea><input placeholder="Name" required><input type="email" placeholder="Email" required>
-<button class="btn btn--solid" style="width:auto;padding:0 40px">Submit</button></form></div>
+{% if product.metafields.reviews.count == blank or product.metafields.reviews.count == 0 %}
+<p class="rev-empty">No reviews yet — be the first to review {{ product.title | upcase }}.</p>
+{% endif %}
+<form class="review-form" id="ReviewForm">
+<p class="rev-label">Your rating</p>
+<div class="rev-stars" role="radiogroup" aria-label="Rating">
+{% for i in (1..5) %}<button type="button" data-star="{{ i }}" aria-label="{{ i }} star{% if i > 1 %}s{% endif %}">★</button>{% endfor %}
+</div>
+<input type="hidden" name="rating" id="ReviewRating" value="5">
+<textarea placeholder="Your review" rows="4" required aria-label="Your review"></textarea>
+<div class="rev-row"><input placeholder="Name" required aria-label="Name"><input type="email" placeholder="Email" required aria-label="Email"></div>
+<button class="btn btn--solid rev-submit">Submit Review</button>
+</form>
+</div>
+<script>
+(function(){var f=document.getElementById('ReviewForm');if(!f||f.dataset.wired)return;f.dataset.wired='1';
+var stars=f.querySelectorAll('[data-star]'),hid=f.querySelector('#ReviewRating');
+function paint(n){stars.forEach(function(s){s.classList.toggle('on',parseInt(s.dataset.star,10)<=n);});}
+paint(5);
+stars.forEach(function(s){s.addEventListener('click',function(){hid.value=s.dataset.star;paint(parseInt(s.dataset.star,10));});});
+f.addEventListener('submit',function(e){e.preventDefault();f.innerHTML='<p class="rev-thanks">\u2713 Thank you! Your review was submitted for moderation.</p>';});})();
+</script>
 {% schema %}{"name":"Reviews","settings":[]}{% endschema %}

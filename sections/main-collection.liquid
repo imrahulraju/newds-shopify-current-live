@@ -1,7 +1,7 @@
 <div class="coll-head"><div>{% render 'breadcrumbs' %}<h1 class="coll-title">{{ collection.title | upcase }}</h1><p style="font-size:12px;margin-top:6px" class="f-list-count" id="FilterResultCount">{{ collection.products_count }} products</p></div>
 <div class="coll-tools"><button type="button" class="f-open-btn f-icon-only" data-filters-open aria-label="Open filters">{% render 'icon', icon: 'sliders' %}<span class="f-count FilterCountBadge" id="FilterCountBadge" hidden></span></button></div></div>
 {% paginate collection.products by 12 %}
-<div class="prod-grid">{% for p in collection.products %}{% render 'product-card', product: p %}{% endfor %}</div>
+<div class="prod-grid">{% for p in collection.products %}{% if p.available %}{% render 'product-card', product: p %}{% endif %}{% endfor %}{% for p in collection.products %}{% unless p.available %}{% render 'product-card', product: p %}{% endunless %}{% endfor %}</div>
 {% render 'pagination', paginate: paginate %}
 {% endpaginate %}
 {% schema %}{"name":"Main collection","settings":[]}{% endschema %}

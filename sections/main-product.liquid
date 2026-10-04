@@ -1,8 +1,12 @@
 {% render 'breadcrumbs' %}
 <div class="pdp"><div class="pdp-gallery">
-<div class="main"><img id="PdpMain" src="{{ product.featured_image | image_url: width: 900 }}" width="900" height="900" alt="{{ product.title | escape }}"></div>
-<div class="pdp-thumbs">{% for img in product.images limit: 5 %}<button class="{% if forloop.first %}on{% endif %}" data-src="{{ img | image_url: width: 900 }}"><img src="{{ img | image_url: width: 120 }}" width="120" height="120" alt="{{ product.title | escape }}"></button>{% endfor %}</div>
-<div class="gal-tools"><button onclick="navigator.share&&navigator.share({title:document.title,url:location.href})">SHARE</button></div>
+<div class="main" id="PdpMainWrap"><img id="PdpMain" src="{{ product.featured_image | image_url: width: 900 }}" width="900" height="900" alt="{{ product.title | escape }}" draggable="false">
+<button type="button" class="gal-icon gal-zoom" id="PdpZoom" aria-label="Zoom image"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></button>
+<button type="button" class="gal-icon gal-share" id="PdpShare" aria-label="Share product"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.2 10.8l7.6-3.6M8.2 13.2l7.6 3.6"/></svg></button>
+{% if product.images.size > 1 %}<div class="gal-dots" id="PdpDots">{% for img in product.images limit: 6 %}<button type="button" data-index="{{ forloop.index0 }}" class="{% if forloop.first %}on{% endif %}" aria-label="View image {{ forloop.index }}"></button>{% endfor %}</div><span class="gal-count" id="PdpCount">1 / {{ product.images.size }}</span>{% endif %}
+</div>
+<div class="pdp-thumbs">{% for img in product.images limit: 6 %}<button class="{% if forloop.first %}on{% endif %}" data-src="{{ img | image_url: width: 900 }}" data-full="{{ img | image_url: width: 1600 }}" data-index="{{ forloop.index0 }}" aria-label="View image {{ forloop.index }}"><img src="{{ img | image_url: width: 120 }}" width="120" height="120" alt="{{ product.title | escape }}" loading="lazy"></button>{% endfor %}</div>
+<div class="gal-lightbox" id="PdpLightbox" hidden><button type="button" class="gal-lb-close" id="PdpLbClose" aria-label="Close zoom">×</button><img id="PdpZoomImg" src="" alt="Zoomed product image"></div>
 </div><div class="pdp-info">
 <h1>{{ product.title | upcase }}</h1>
 <div class="pdp-price">{% render 'price', product: product %}</div>
