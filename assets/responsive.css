@@ -57,3 +57,7 @@ body{padding-bottom:60px;padding-top:60px}
 @media(max-width:767px){
 .h-acc,.h-cart{display:none!important}
 }
+
+@media(max-width:767px){
+.p-utils{padding:6px 5px 0}
+}
