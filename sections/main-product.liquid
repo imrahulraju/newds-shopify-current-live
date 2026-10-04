@@ -26,6 +26,8 @@
 {% endform %}
 <div class="pdp-meta">
 <details open><summary>DESCRIPTION</summary><div style="margin-top:8px">{{ product.description }}</div></details>
+{% assign pdp_coll = blank %}{% if collection and collection.description != blank and collection.handle != 'all' and collection.handle != 'frontpage' %}{% assign pdp_coll = collection %}{% else %}{% for c in product.collections %}{% if c.description != blank and c.handle != 'all' and c.handle != 'frontpage' %}{% assign pdp_coll = c %}{% break %}{% endif %}{% endfor %}{% endif %}
+{% if pdp_coll != blank %}<details><summary>ABOUT {{ pdp_coll.title | upcase }}</summary><div style="margin-top:8px">{{ pdp_coll.description }}</div></details>{% endif %}
 {% if product.metafields.custom.care_instructions %}<details><summary>JEWELLERY CARE</summary><div style="margin-top:8px">{{ product.metafields.custom.care_instructions }}</div></details>{% endif %}
 {% if product.metafields.custom.product_features %}<details><summary>FEATURES</summary><div style="margin-top:8px">{{ product.metafields.custom.product_features | join: '<br>' }}</div></details>{% endif %}
 <details><summary>SHIPPING & RETURNS</summary><div style="margin-top:8px">Free shipping on orders over ₹3799. 30-day easy returns.</div></details>
