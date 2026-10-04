@@ -27,6 +27,14 @@ document.addEventListener('DOMContentLoaded',()=>{
     const dir=btn.dataset.scroll==='next'?1:-1;
     btn.closest('.carousel-wrap').querySelector('.carousel').scrollBy({left:dir*320,behavior:'smooth'});
   }));
+  document.querySelectorAll('.carousel').forEach(car=>{
+    let down=false,sx=0,sl=0,moved=false;
+    car.addEventListener('pointerdown',e=>{down=true;moved=false;sx=e.clientX;sl=car.scrollLeft;car.classList.add('dragging');});
+    window.addEventListener('pointermove',e=>{if(!down)return;const dx=e.clientX-sx;if(Math.abs(dx)>6){moved=true;car.classList.add('dragging');}car.scrollLeft=sl-dx;});
+    ['pointerup','pointercancel','pointerleave'].forEach(ev=>window.addEventListener(ev,()=>{down=false;car.classList.remove('dragging');}));
+    car.addEventListener('click',e=>{if(moved){e.preventDefault();e.stopPropagation();moved=false;}},true);
+    car.querySelectorAll('img,a').forEach(el=>el.setAttribute('draggable','false'));
+  });
   document.querySelectorAll('[data-modal]').forEach(b=>b.addEventListener('click',()=>{document.getElementById(b.dataset.modal).classList.add('open')}));
   document.querySelectorAll('[data-modal-close]').forEach(b=>b.addEventListener('click',()=>{b.closest('.modal').classList.remove('open')}));
 });
