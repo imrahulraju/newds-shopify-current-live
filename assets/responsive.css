@@ -68,3 +68,11 @@ body{padding-bottom:60px;padding-top:60px}
 .foot-grid>div{display:flex;flex-direction:column;align-items:center}
 .foot-grid a{display:flex;justify-content:center;align-items:center;margin-left:auto;margin-right:auto}
 }
+
+@media(max-width:767px){
+.page-body{font-size:13.5px;line-height:1.8}
+.page-body h2{font-size:15px;margin:26px 0 10px}
+.page-body h3{font-size:13px;margin:22px 0 8px}
+.page-body table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.page-body th,.page-body td{padding:8px 10px;min-width:120px}
+}

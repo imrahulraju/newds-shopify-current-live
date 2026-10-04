@@ -275,3 +275,30 @@ footer{background:var(--footer-bg);padding:55px 0 30px;margin-top:40px}
 .carousel{cursor:grab}
 .carousel.dragging{cursor:grabbing;scroll-snap-type:none}
 .carousel.dragging a,.carousel.dragging img{user-select:none;-webkit-user-select:none}
+
+/* shopify rich-text pages - scoped to .page-body only, never affects main pages */
+.page-body{margin-top:20px;font-size:14px;line-height:1.9;color:var(--body);overflow-wrap:break-word;max-width:100%}
+.page-body .page-body{margin:0;padding:0;max-width:none}
+.page-body>*:first-child{margin-top:0}
+.page-body>*:last-child{margin-bottom:0}
+.page-body h2{font-size:17px;letter-spacing:2px;text-align:left;margin:32px 0 12px;color:var(--heading);text-transform:uppercase}
+.page-body h3{font-size:14px;letter-spacing:2px;text-align:left;text-transform:uppercase;margin:28px 0 10px;padding-top:8px;border-top:1px solid #F1ECE7;color:var(--heading)}
+.page-body h3:first-child{border-top:0;padding-top:0;margin-top:0}
+.page-body h4{font-size:13px;letter-spacing:2px;text-align:left;margin:24px 0 8px;color:var(--heading)}
+.page-body p{margin:0 0 12px}
+.page-body p:has(>strong:only-child),.page-body p:has(>b:only-child){margin:16px 0 4px}
+.page-body strong,.page-body b{color:var(--heading);font-weight:600}
+.page-body ul,.page-body ol{margin:0 0 16px 20px;padding:0}
+.page-body li{margin:6px 0}
+.page-body li::marker{color:var(--primary)}
+.page-body a{color:var(--primary);text-decoration:underline;text-underline-offset:3px}
+.page-body img,.page-body iframe{max-width:100%;height:auto;border-radius:4px;margin:12px 0}
+.page-body iframe{width:100%;aspect-ratio:16/9;height:auto;border:1px solid var(--border)}
+.page-body blockquote{border-left:2px solid var(--primary);margin:16px 0;padding:4px 0 4px 16px;color:var(--heading);font-size:13.5px}
+.page-body hr{border:0;border-top:1px solid var(--border);margin:24px 0}
+.page-body table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13px;line-height:1.6;background:#fff}
+.page-body caption{caption-side:top;text-align:left;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--heading);padding:0 0 10px}
+.page-body th,.page-body td{border:1px solid var(--border);padding:10px 12px;text-align:left;vertical-align:top}
+.page-body thead th,.page-body th{background:#F9F8F6;color:var(--heading);font-weight:600;letter-spacing:1px;font-size:12px;text-transform:uppercase;white-space:nowrap}
+.page-body tbody tr:nth-child(even) td{background:#FCFBFA}
+.page-body tbody tr:hover td{background:#F9F8F6}
