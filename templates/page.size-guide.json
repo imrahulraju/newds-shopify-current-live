@@ -9,12 +9,28 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "size-guide-section",
+    "1791100296450fb6df": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_3badd13_48AVpk": {
+          "type": "ai_gen_block_3badd13",
+          "settings": {
+            "desktop_width_percent": 100,
+            "intro": "Find your perfect fit with our sizing chart.",
+            "contact_text": "Need help choosing the right size? Contact us on Instagram and we’ll be happy to assist you.",
+            "contact_link_label": "Visit our Instagram",
+            "instagram_link": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_3badd13_48AVpk"
+      ],
       "settings": {}
     }
   },
   "order": [
-    "main"
+    "1791100296450fb6df"
   ]
 }
