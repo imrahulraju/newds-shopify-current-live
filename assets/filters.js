@@ -27,6 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
   pills.forEach(bindPill);
+  catInputs.forEach(i => i.addEventListener('change', updateBadge));
+  subInputs.forEach(i => i.addEventListener('change', updateBadge));
+  sortInputs.forEach(i => i.addEventListener('change', updateBadge));
+  drawer.addEventListener('click', e => { const pl = e.target.closest('.f-pill'); if (pl) setTimeout(updateBadge, 0); });
   const applyBtn = document.getElementById('FiltersApply');
   const clearBtn = document.getElementById('FiltersClear');
   const badges = Array.from(document.querySelectorAll('.FilterCountBadge'));
@@ -106,10 +110,26 @@ document.addEventListener('DOMContentLoaded', () => {
     return grids.flatMap(g => Array.from(g.querySelectorAll('.p-card')));
   }
 
+  function activeFilterCount() {
+    const subs = selectedSubs();
+    const sizes = selectedSizes();
+    const cat = selectedCat();
+    const sort = (selectedSort() || '').toLowerCase();
+    let n = subs.length + sizes.length;
+    if (cat && cat !== currentHandle) n += 1;
+    if (sort && sort !== 'manual' && sort !== currentSort) n += 1;
+    return n;
+  }
+  function updateBadge() {
+    const n = activeFilterCount();
+    badges.forEach(b => { b.hidden = n === 0; b.textContent = n; });
+    const legacyBadge = document.getElementById('FilterCountBadge');
+    if (legacyBadge && !badges.includes(legacyBadge)) { legacyBadge.hidden = n === 0; legacyBadge.textContent = n; }
+  }
   function applyClientFilters() {
     const subs = selectedSubs();
     const sizes = selectedSizes();
-    const activeCount = subs.length + sizes.length;
+    const activeCount = activeFilterCount();
     let totalVisible = 0;
     let totalCards = 0;
     grids.forEach((grid) => {
@@ -271,4 +291,5 @@ document.addEventListener('DOMContentLoaded', () => {
   toggleSub();
   buildDynamicFilters();
   readURL();
+  updateBadge();
 });
