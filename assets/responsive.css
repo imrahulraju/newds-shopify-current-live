@@ -53,3 +53,7 @@ body{padding-bottom:60px;padding-top:60px}
 @media(min-width:1440px){
 .page-width,.header-inner,.carousel-wrap,.prod-grid,.coll-head,.pdp,.foot-grid,.benefits-grid{max-width:1280px}
 }
+
+@media(max-width:767px){
+.h-acc,.h-cart{display:none!important}
+}

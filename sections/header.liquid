@@ -3,7 +3,7 @@
 <div class="header-center"><a href="/" class="logo" aria-label="Newds"><img src="{{ 'logo-newds.svg' | asset_url }}" alt="NEWDS" width="196" height="19" loading="eager"></a></div>
 <div class="header-right">
 <button class="icon-btn" data-search-open aria-label="Search">{% render 'icon', icon: 'search' %}</button>
-<a class="icon-btn" href="{% if customer %}/account{% else %}/account/login{% endif %}" aria-label="Account">{% render 'icon', icon: 'account' %}</a>
-<button class="icon-btn" onclick="Cart.open()" aria-label="Cart">{% render 'icon', icon: 'cart' %}<span class="cart-count">0</span></button>
+<a class="icon-btn h-acc" href="{% if customer %}/account{% else %}/account/login{% endif %}" aria-label="Account">{% render 'icon', icon: 'account' %}</a>
+<button class="icon-btn h-cart" onclick="Cart.open()" aria-label="Cart">{% render 'icon', icon: 'cart' %}<span class="cart-count">0</span></button>
 </div></div></header>
 {% schema %}{"name":"Header","settings":[]}{% endschema %}
