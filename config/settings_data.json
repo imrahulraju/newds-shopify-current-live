@@ -9,7 +9,29 @@
  */
 {
   "current": {
-    "brand_name": "NEWDS.CO"
+    "brand_name": "NEWDS.CO",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {}
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {}
+      },
+      "mobile-bottom-nav": {
+        "type": "mobile-bottom-nav",
+        "settings": {}
+      }
+    },
+    "content_for_index": [],
+    "blocks": {
+      "14280642947000332093": {
+        "type": "shopify://apps/warnify-pro-warnings/blocks/main/b82106ea-6172-4ab0-814f-17df1cb2b18a",
+        "disabled": false,
+        "settings": {}
+      }
+    }
   },
   "presets": {}
 }
