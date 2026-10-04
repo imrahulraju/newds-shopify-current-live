@@ -26,8 +26,8 @@
     },
     "content_for_index": [],
     "blocks": {
-      "14280642947000332093": {
-        "type": "shopify://apps/warnify-pro-warnings/blocks/main/b82106ea-6172-4ab0-814f-17df1cb2b18a",
+      "7068896974045230529": {
+        "type": "shopify://apps/warn/blocks/warningpro-embed/019de301-db11-7e11-8d3f-08998323f253",
         "disabled": false,
         "settings": {}
       }
