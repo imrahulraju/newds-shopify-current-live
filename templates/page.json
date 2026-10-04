@@ -10,7 +10,7 @@
 {
   "sections": {
     "main": {
-      "type": "about-section",
+      "type": "page",
       "settings": {}
     }
   },
