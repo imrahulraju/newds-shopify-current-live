@@ -18,7 +18,8 @@
 {% for opt in product.options_with_values %}<div class="variant-label">{{ opt.name | upcase }}{% if opt.name == 'Size' or opt.name == 'size' %}<a data-modal="SizeModal">Size Guide</a>{% endif %}</div>
 <div class="variants">{% for v in opt.values %}<button type="button" class="variant {% if opt.selected_value == v %}on{% endif %}" data-option="option{{ opt.position }}" data-value="{{ v | escape }}">{{ v }}</button>{% endfor %}</div>{% endfor %}
 {% endunless %}
-<div class="variant-label">QUANTITY</div><div class="qty"><button type="button" data-qty="minus">−</button><input name="quantity" value="1" min="1"><button type="button" data-qty="plus">+</button></div>
+<div class="variant-label">QUANTITY</div><div class="qty"><button type="button" data-qty="minus">−</button>{% assign _v = product.selected_or_first_available_variant %}<input name="quantity" id="PdpQty" value="1" min="1" max="{% if _v.inventory_management and _v.inventory_policy == 'deny' %}{{ _v.inventory_quantity }}{% else %}99{% endif %}"><button type="button" data-qty="plus">+</button></div>
+<div id="StockNote" style="font-size:12px;margin-top:6px"></div>
 <div id="Avail">{% if product.available %}<span class="stock-in">● In Stock</span>{% else %}<span class="stock-out">● Out of Stock</span>{% endif %}</div>
 {% assign pdp_in_cart = false %}{% for item in cart.items %}{% if item.variant_id == product.selected_or_first_available_variant.id %}{% assign pdp_in_cart = true %}{% endif %}{% endfor %}
 <button type="submit" id="PdpCta" data-product-id="{{ product.id }}" data-mode="{% if pdp_in_cart %}view{% else %}add{% endif %}" class="btn btn--solid" style="margin-top:14px" {% unless product.available %}disabled{% endunless %}>{% if pdp_in_cart %}View Cart{% else %}Add to Cart{% endif %}</button>
