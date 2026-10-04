@@ -31,7 +31,7 @@ body{padding-bottom:60px;padding-top:60px}
 .cat-item{min-width:92px}
 .cat-grid--text .cat-item{min-width:112px}
 .cat-grid--text .cat-circle{font-size:11px;letter-spacing:1.5px}
-.carousel{grid-auto-columns:calc(50% - 8px);gap:12px}
+.carousel{grid-auto-columns:calc(50% - 8px);gap:12px;overflow-y:hidden;overscroll-behavior-x:contain;align-items:start}
 .carousel-wrap{padding:0 16px}
 .car-btn{display:none}
 .prod-grid{grid-template-columns:repeat(2,1fr);gap:12px;padding:16px 16px 8px}
@@ -59,5 +59,12 @@ body{padding-bottom:60px;padding-top:60px}
 }
 
 @media(max-width:767px){
-.p-utils{padding:6px 5px 0}
+.p-utils{padding:6px 10px 0}
+}
+
+@media(max-width:767px){
+.foot-brand{display:flex;flex-direction:column;align-items:center;text-align:center}
+.foot-brand .logo{justify-content:center;margin:0 auto}
+.foot-grid>div{display:flex;flex-direction:column;align-items:center}
+.foot-grid a{display:flex;justify-content:center;align-items:center;margin-left:auto;margin-right:auto}
 }

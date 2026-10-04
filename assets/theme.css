@@ -58,7 +58,7 @@ body{padding-top:68px}
 .cat-item:hover .cat-circle{border-color:var(--primary);background:#FBFAF8}
 /* carousel */
 .carousel-wrap{position:relative;max-width:var(--max);margin:0 auto;padding:0 32px}
-.carousel{display:grid;grid-auto-flow:column;grid-auto-columns:calc(20% - 16px);gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
+.carousel{display:grid;grid-auto-flow:column;grid-auto-columns:calc(20% - 16px);gap:20px;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px;align-items:start;touch-action:pan-x pan-y}
 .carousel::-webkit-scrollbar{display:none}
 .carousel .p-card{scroll-snap-align:start}
 .car-btn{position:absolute;top:38%;background:#fff;border:1px solid var(--border);width:36px;height:36px;border-radius:50%;cursor:pointer;color:var(--primary);z-index:2}
