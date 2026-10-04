@@ -16,7 +16,8 @@
 {% endunless %}
 <div class="variant-label">QUANTITY</div><div class="qty"><button type="button" data-qty="minus">−</button><input name="quantity" value="1" min="1"><button type="button" data-qty="plus">+</button></div>
 <div id="Avail">{% if product.available %}<span class="stock-in">● In Stock</span>{% else %}<span class="stock-out">● Out of Stock</span>{% endif %}</div>
-<button type="submit" class="btn btn--solid" style="margin-top:14px" {% unless product.available %}disabled{% endunless %}>View Cart</button>
+{% assign pdp_in_cart = false %}{% for item in cart.items %}{% if item.variant_id == product.selected_or_first_available_variant.id %}{% assign pdp_in_cart = true %}{% endif %}{% endfor %}
+<button type="submit" id="PdpCta" data-product-id="{{ product.id }}" data-mode="{% if pdp_in_cart %}view{% else %}add{% endif %}" class="btn btn--solid" style="margin-top:14px" {% unless product.available %}disabled{% endunless %}>{% if pdp_in_cart %}View Cart{% else %}Add to Cart{% endif %}</button>
 <div class="cart-success" id="CartOk">✓ Added to cart successfully</div>
 {% endform %}
 <div class="pdp-meta">

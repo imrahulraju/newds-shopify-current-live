@@ -8,6 +8,7 @@ paint(cart){
   const box=document.getElementById('CartItems');
   if(box){box.innerHTML=cart.items.length?cart.items.map(i=>`<div class="cart-row"><img src="${i.image}" alt="${i.title}"><div><div style="font-size:12px;letter-spacing:1px">${i.product_title}</div>${i.variant_title&&i.variant_title!=='Default Title'?`<div style="font-size:12px;color:#B9AEA4">${i.variant_title}</div>`:''}<div class="qty-step"><button type="button" data-cart-dec data-key="${i.key}" data-cur="${i.quantity}" aria-label="Decrease quantity">−</button><span data-cur-val>${i.quantity}</span><button type="button" data-cart-inc data-key="${i.key}" data-cur="${i.quantity}" aria-label="Increase quantity">+</button></div><div style="font-size:12px">₹${(i.line_price/100).toLocaleString('en-IN')}</div></div><button type="button" data-cart-rem data-key="${i.key}" style="background:none;border:0;cursor:pointer;font-size:16px">×</button></div>`).join(''):'<p style="text-align:center;padding:30px 0">Your cart is empty</p>';
   const tot=document.getElementById('CartTotal');if(tot)tot.textContent='₹'+(cart.total_price/100).toLocaleString('en-IN');}
+  try{document.dispatchEvent(new CustomEvent('cart:updated',{detail:cart||null}))}catch(e){}
 },
 async add(id,qty=1){this.note('');const r=await fetch('/cart/add.js',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({id,quantity:qty})});await r.json().catch(()=>null);await this.render();this.open();},
 async change(key,qty){

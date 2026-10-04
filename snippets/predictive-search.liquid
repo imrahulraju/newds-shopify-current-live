@@ -1,1 +1,12 @@
-<div class="search-panel" id="SearchPanel"><div style="max-width:640px;margin:0 auto"><div style="display:flex;gap:10px"><form action="/search" style="flex:1;display:flex;gap:10px"><input id="SearchInput" name="q" placeholder="Search jewellery…" autocomplete="off"><button class="btn" type="submit">Search</button></form><button class="icon-btn" data-search-close>×</button></div><div id="SearchResults"></div></div></div>
+<div class="search-panel" id="SearchPanel">
+  <div class="search-wrap">
+    <div class="search-bar">
+      <form action="/search" class="search-form">
+        <span class="search-ico">{% render 'icon', icon: 'search' %}</span>
+        <input id="SearchInput" name="q" placeholder="Search necklaces, rings, bracelets…" autocomplete="off" aria-label="Search products">
+        <button class="icon-btn" type="button" data-search-close aria-label="Close search">×</button>
+      </form>
+      <div id="SearchResults" class="search-drop" hidden></div>
+    </div>
+  </div>
+</div>

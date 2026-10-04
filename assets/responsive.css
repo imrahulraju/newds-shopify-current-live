@@ -14,12 +14,18 @@ body{padding-bottom:60px}
 .header-center{text-align:center}
 .header-right{justify-content:flex-end;gap:14px}
 .site-header .logo img,.logo img{width:160px;height:15px}
-.hero{grid-template-columns:1fr;min-height:165px;position:relative;gap:0}
+.hero{position:relative;display:grid;grid-template-columns:1fr;min-height:280px;gap:0;align-items:end;overflow:hidden}
 .hero-media{position:absolute;inset:0}
-.hero-media img,.hero-media .ph{height:165px}
-.hero-content{position:relative;z-index:1;padding:28px 24px;text-align:center;max-width:none}
-.hero-content h1{font-size:17px;text-align:center}
-.benefits-grid{grid-template-columns:repeat(2,1fr);padding:0 24px;gap:20px}
+.hero-media img,.hero-media .ph{width:100%;height:100%;min-height:280px;object-fit:cover;object-position:center top}
+.hero-img-d{display:none}
+.hero-media .hero-img-d:only-child{display:block}
+.hero-img-m{display:block}
+.hero-content{position:relative;z-index:1;padding:32px 20px 36px;text-align:left;max-width:none}
+.hero-content h1{font-size:22px;text-align:left}
+.hero-content p{text-align:left}
+.hero-content .btn{margin-left:0}
+.hero-banner .page-width{padding:0}
+.benefits{padding:14px 0}.benefits-grid{grid-template-columns:repeat(4,1fr);padding:0 12px;gap:6px}.benefit{font-size:9px;letter-spacing:1px;gap:6px}.benefit-icon svg,.benefit svg{width:20px;height:20px}
 .cat-grid{display:flex;overflow-x:auto;gap:16px;padding:0 24px 8px;scrollbar-width:none}
 .cat-grid::-webkit-scrollbar{display:none}
 .cat-item{min-width:92px}
