@@ -29,7 +29,8 @@ async change(key,qty){
   if(this.pending[key]!==undefined){const n=this.pending[key];delete this.pending[key];return this.change(key,n);}
   await this.render();
 },
-async render(){try{const cart=await this.get();this.paint(cart);}catch(e){console.warn('cart render error',e)}},
+async render(){try{const cart=await this.get();this.paint(cart);this.clampOverstock(cart);}catch(e){console.warn('cart render error',e)}},
+async clampOverstock(cart){try{if(!cart||!cart.items||!cart.items.length)return;for(const it of cart.items){const lim=await this.variantLimit(it.variant_id);if(it.quantity>lim){this.note(lim===0?'An item is out of stock and was adjusted':('Cart adjusted to available stock (only '+lim+' available)'));await this.change(it.key,Math.max(lim,0));return;}}}catch(e){}},
 open(){document.getElementById('CartDrawer').classList.add('open');var o=document.querySelector('[data-overlay]');if(o)o.classList.add('show')},
 close(){document.getElementById('CartDrawer').classList.remove('open');var m=document.getElementById('MobileMenu');if(!m||!m.classList.contains('open')){var o=document.querySelector('[data-overlay]');if(o)o.classList.remove('show')}}
 };
