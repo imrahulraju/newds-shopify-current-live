@@ -23,6 +23,8 @@ body{padding-bottom:60px}
 .cat-grid{display:flex;overflow-x:auto;gap:16px;padding:0 24px 8px;scrollbar-width:none}
 .cat-grid::-webkit-scrollbar{display:none}
 .cat-item{min-width:92px}
+.cat-grid--text .cat-item{min-width:112px}
+.cat-grid--text .cat-circle{font-size:11px;letter-spacing:1.5px}
 .carousel{grid-auto-columns:calc(50% - 8px);gap:12px}
 .carousel-wrap{padding:0 16px}
 .car-btn{display:none}
