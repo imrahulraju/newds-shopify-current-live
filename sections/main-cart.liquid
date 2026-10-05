@@ -7,11 +7,15 @@
 
   {% if cart.item_count > 0 %}
     {% form 'cart', cart %}
+      <!-- CART ITEMS -->
       <div style="display:grid;gap:16px">
         {% for item in cart.items %}
           <div
             class="cart-row"
-            style="border:1px solid var(--border);padding:12px"
+            style="
+              border:1px solid var(--border);
+              padding:12px;
+            "
           >
             <img
               src="{{ item.image | image_url: width: 160 }}"
@@ -21,7 +25,12 @@
             >
 
             <div>
-              <div style="font-size:12px;letter-spacing:1px">
+              <div
+                style="
+                  font-size:12px;
+                  letter-spacing:1px;
+                "
+              >
                 {{ item.product.title | upcase }}
               </div>
 
@@ -30,18 +39,34 @@
                 · ₹{{ item.final_price | money_without_currency }}
               </div>
 
-              <div style="display:flex;gap:8px;margin-top:8px">
+              <div
+                style="
+                  display:flex;
+                  gap:8px;
+                  margin-top:8px;
+                "
+              >
                 <input
                   type="number"
                   name="updates[]"
                   value="{{ item.quantity }}"
                   min="0"
-                  style="width:60px;border:1px solid var(--border);padding:6px"
+                  style="
+                    width:60px;
+                    border:1px solid var(--border);
+                    padding:6px;
+                  "
                 >
 
                 <button
                   type="submit"
-                  style="background:none;border:0;cursor:pointer;color:var(--primary);font-size:12px"
+                  style="
+                    background:none;
+                    border:0;
+                    cursor:pointer;
+                    color:var(--primary);
+                    font-size:12px;
+                  "
                 >
                   Update
                 </button>
@@ -60,82 +85,98 @@
         {% endfor %}
       </div>
 
-      <div style="text-align:right;margin-top:24px">
+      <!-- CART TOTAL -->
+      <div
+        style="
+          text-align:right;
+          margin-top:24px;
+        "
+      >
         <p>
           Subtotal:
           <strong> ₹{{ cart.total_price | money_without_currency }} </strong>
         </p>
 
-        <!-- INTERNATIONAL SHIPPING AGREEMENT -->
-
-        {% if localization.country.iso_code != 'IN' %}
+        <!-- INTERNATIONAL SHIPPING MESSAGE -->
+        <div
+          id="international-shipping-box"
+          style="
+            text-align:left;
+            margin-top:20px;
+            padding:18px;
+            border:1px solid var(--border);
+            background:#fafafa;
+          "
+        >
           <div
             style="
-              margin-top:20px;
-              padding:16px;
-              border:1px solid var(--border);
-              text-align:left;
-              background:#fafafa;
+              font-size:14px;
+              font-weight:600;
+              margin-bottom:8px;
             "
           >
-            <div
-              style="
-                font-size:14px;
-                font-weight:600;
-                margin-bottom:8px;
-              "
-            >
-              International Shipping
-            </div>
-
-            <div
-              style="
-                font-size:13px;
-                line-height:1.6;
-                margin-bottom:14px;
-              "
-            >
-              Shipping charges for orders outside India are not included in the order total. We will contact you after
-              placing the order and inform you of the applicable shipping charges based on your country.
-            </div>
-
-            <label
-              style="
-                display:flex;
-                gap:10px;
-                align-items:flex-start;
-                cursor:pointer;
-                font-size:13px;
-                line-height:1.5;
-              "
-            >
-              <input
-                type="checkbox"
-                id="international-shipping-agreement"
-                style="
-                  width:18px;
-                  height:18px;
-                  margin:2px 0 0;
-                  flex-shrink:0;
-                "
-              >
-
-              <span> I agree to pay the applicable international shipping charges. </span>
-            </label>
-
-            <div
-              id="international-shipping-error"
-              style="
-                display:none;
-                color:#d00;
-                font-size:12px;
-                margin-top:10px;
-              "
-            >
-              Please agree to the international shipping charges before proceeding to checkout.
-            </div>
+            International Shipping
           </div>
-        {% endif %}
+
+          <div
+            style="
+              font-size:13px;
+              line-height:1.6;
+              margin-bottom:14px;
+            "
+          >
+            Shipping charges for orders outside India are not included in the order total.
+
+            We will contact you after placing the order and inform you of the applicable shipping charges based on your
+            country.
+
+            Please agree to pay the applicable shipping charges before proceeding.
+          </div>
+
+          <!-- CHECKBOX -->
+
+          <label
+            for="international-shipping-agreement"
+            style="
+              display:flex;
+              align-items:flex-start;
+              gap:10px;
+              cursor:pointer;
+              font-size:13px;
+              line-height:1.5;
+            "
+          >
+            <input
+              type="checkbox"
+              id="international-shipping-agreement"
+              name="international_shipping_agreement"
+              value="accepted"
+              style="
+                width:18px;
+                height:18px;
+                margin:2px 0 0;
+                flex-shrink:0;
+                cursor:pointer;
+              "
+            >
+
+            <span> I agree to pay the applicable international shipping charges. </span>
+          </label>
+
+          <!-- ERROR MESSAGE -->
+
+          <div
+            id="international-shipping-error"
+            style="
+              display:none;
+              color:#d00000;
+              font-size:12px;
+              margin-top:10px;
+            "
+          >
+            Please agree to the international shipping charges before proceeding to checkout.
+          </div>
+        </div>
 
         <!-- BUTTONS -->
 
@@ -159,7 +200,10 @@
             name="checkout"
             id="cart-checkout-button"
             class="btn btn--solid"
-            style="width:auto;padding:0 40px"
+            style="
+              width:auto;
+              padding:0 40px;
+            "
           >
             Checkout
           </button>
@@ -168,8 +212,16 @@
     {% endform %}
 
   {% else %}
-    <p style="text-align:center;padding:40px 0">
+    <!-- EMPTY CART -->
+
+    <p
+      style="
+        text-align:center;
+        padding:40px 0;
+      "
+    >
       Your cart is empty.
+
       <a
         href="/collections/all"
         style="text-decoration:underline"
@@ -180,17 +232,18 @@
   {% endif %}
 </div>
 
+<!-- CHECKBOX VALIDATION -->
+
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const checkbox = document.getElementById('international-shipping-agreement');
+    var checkbox = document.getElementById('international-shipping-agreement');
 
-    const checkoutButton = document.getElementById('cart-checkout-button');
+    var checkoutButton = document.getElementById('cart-checkout-button');
 
-    const errorMessage = document.getElementById('international-shipping-error');
+    var errorMessage = document.getElementById('international-shipping-error');
 
     /*
-     * India:
-     * No checkbox exists, so checkout works normally.
+     * Make sure all required elements exist
      */
 
     if (!checkbox || !checkoutButton) {
@@ -198,22 +251,34 @@
     }
 
     /*
-     * International:
-     * Require checkbox before checkout.
+     * Checkout button
      */
 
     checkoutButton.addEventListener('click', function (event) {
+      /*
+       * Checkbox NOT checked
+       */
+
       if (!checkbox.checked) {
         event.preventDefault();
 
         errorMessage.style.display = 'block';
 
         checkbox.focus();
+
+        return false;
       }
+
+      /*
+       * Checkbox checked
+       */
+
+      errorMessage.style.display = 'none';
     });
 
     /*
-     * Hide error after customer checks the box.
+     * When checkbox is checked,
+     * remove error message.
      */
 
     checkbox.addEventListener('change', function () {
