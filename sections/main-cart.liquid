@@ -9,7 +9,10 @@
     {% form 'cart', cart %}
       <div style="display:grid;gap:16px">
         {% for item in cart.items %}
-          <div class="cart-row" style="border:1px solid var(--border);padding:12px">
+          <div
+            class="cart-row"
+            style="border:1px solid var(--border);padding:12px"
+          >
             <img
               src="{{ item.image | image_url: width: 160 }}"
               width="160"
@@ -23,7 +26,8 @@
               </div>
 
               <div style="font-size:12px">
-                {{ item.variant_title }} · ₹{{ item.final_price | money_without_currency }}
+                {{ item.variant_title }}
+                · ₹{{ item.final_price | money_without_currency }}
               </div>
 
               <div style="display:flex;gap:8px;margin-top:8px">
@@ -42,7 +46,12 @@
                   Update
                 </button>
 
-                <a href="{{ item.url_to_remove }}" style="font-size:12px"> Remove </a>
+                <a
+                  href="{{ item.url_to_remove }}"
+                  style="font-size:12px"
+                >
+                  Remove
+                </a>
               </div>
             </div>
 
@@ -54,60 +63,81 @@
       <div style="text-align:right;margin-top:24px">
         <p>
           Subtotal:
-          <strong>₹{{ cart.total_price | money_without_currency }}</strong>
+          <strong> ₹{{ cart.total_price | money_without_currency }} </strong>
         </p>
 
-        <!-- INTERNATIONAL SHIPPING MESSAGE -->
+        <!-- INTERNATIONAL SHIPPING AGREEMENT -->
 
         {% if localization.country.iso_code != 'IN' %}
           <div
             style="
-              text-align:left;
-              border:1px solid var(--border);
-              padding:16px;
               margin-top:20px;
+              padding:16px;
+              border:1px solid var(--border);
+              text-align:left;
               background:#fafafa;
             "
           >
-            <div style="font-size:13px;line-height:1.6">
-              <strong>International Shipping</strong>
+            <div
+              style="
+                font-size:14px;
+                font-weight:600;
+                margin-bottom:8px;
+              "
+            >
+              International Shipping
+            </div>
 
-              <p style="margin:8px 0 12px;">
-                Shipping charges for orders outside India are currently not included. We will contact you after placing
-                the order and inform you of the applicable shipping charges based on your country.
-              </p>
+            <div
+              style="
+                font-size:13px;
+                line-height:1.6;
+                margin-bottom:14px;
+              "
+            >
+              Shipping charges for orders outside India are not included in the order total. We will contact you after
+              placing the order and inform you of the applicable shipping charges based on your country.
+            </div>
 
-              <label
+            <label
+              style="
+                display:flex;
+                gap:10px;
+                align-items:flex-start;
+                cursor:pointer;
+                font-size:13px;
+                line-height:1.5;
+              "
+            >
+              <input
+                type="checkbox"
+                id="international-shipping-agreement"
                 style="
-                  display:flex;
-                  gap:8px;
-                  align-items:flex-start;
-                  cursor:pointer;
+                  width:18px;
+                  height:18px;
+                  margin:2px 0 0;
+                  flex-shrink:0;
                 "
               >
-                <input
-                  type="checkbox"
-                  id="international-shipping-agreement"
-                  style="margin-top:4px;"
-                >
 
-                <span> I agree to pay the applicable international shipping charges. </span>
-              </label>
+              <span> I agree to pay the applicable international shipping charges. </span>
+            </label>
 
-              <p
-                id="international-shipping-error"
-                style="
-                  display:none;
-                  color:#c00;
-                  margin:8px 0 0;
-                  font-size:12px;
-                "
-              >
-                Please agree to the international shipping charges before proceeding.
-              </p>
+            <div
+              id="international-shipping-error"
+              style="
+                display:none;
+                color:#d00;
+                font-size:12px;
+                margin-top:10px;
+              "
+            >
+              Please agree to the international shipping charges before proceeding to checkout.
             </div>
           </div>
         {% endif %}
+
+        <!-- BUTTONS -->
 
         <div
           style="
@@ -117,7 +147,12 @@
             margin-top:12px;
           "
         >
-          <a href="/collections/all" class="btn"> Continue Shopping </a>
+          <a
+            href="/collections/all"
+            class="btn"
+          >
+            Continue Shopping
+          </a>
 
           <button
             type="submit"
@@ -151,26 +186,39 @@
 
     const checkoutButton = document.getElementById('cart-checkout-button');
 
-    const error = document.getElementById('international-shipping-error');
+    const errorMessage = document.getElementById('international-shipping-error');
 
-    // India doesn't have the checkbox, so nothing else is required
+    /*
+     * India:
+     * No checkbox exists, so checkout works normally.
+     */
+
     if (!checkbox || !checkoutButton) {
       return;
     }
+
+    /*
+     * International:
+     * Require checkbox before checkout.
+     */
 
     checkoutButton.addEventListener('click', function (event) {
       if (!checkbox.checked) {
         event.preventDefault();
 
-        error.style.display = 'block';
+        errorMessage.style.display = 'block';
 
         checkbox.focus();
       }
     });
 
+    /*
+     * Hide error after customer checks the box.
+     */
+
     checkbox.addEventListener('change', function () {
       if (checkbox.checked) {
-        error.style.display = 'none';
+        errorMessage.style.display = 'none';
       }
     });
   });
